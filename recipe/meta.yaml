@@ -1,8 +1,8 @@
 {% set xorg_name = "libxcb" %}
-{% set xorg_category = "xcb" %}
+{% set xorg_category = "lib" %}
 {% set name = "libxcb" %}
-{% set version = "1.13" %}
-{% set sha256 = "188c8752193c50ff2dbe89db4554c63df2e26a2e47b0fa415a70918b5b851daa" %}
+{% set version = "1.15" %}
+{% set sha256 = "1cb65df8543a69ec0555ac696123ee386321dfac1964a3da39976c9a05ad724d" %}
 {% set am_version = "1.15" %} # keep synchronized with build.sh
 
 package:
@@ -11,13 +11,13 @@ package:
 
 source:
   fn: {{ xorg_name }}-{{ version }}.tar.bz2
-  url: https://www.x.org/releases/individual/{{ xorg_category }}/{{ xorg_name }}-{{ version }}.tar.bz2
+  url: https://xorg.freedesktop.org/archive/individual/{{ xorg_category }}/{{ xorg_name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
     - windows.patch  # [win]
 
 build:
-  number: 1004
+  number: 0
   detect_binary_files_with_prefix: true
   run_exports:
     - {{ pin_subpackage('libxcb', max_pin='x.x') }}
@@ -44,7 +44,7 @@ requirements:
     - xorg-libxau
     - xorg-libxdmcp
     - xorg-util-macros
-    - xcb-proto >=1.13
+    - xcb-proto {{ version }}
     - xorg-xproto
   run:
     - pthread-stubs
