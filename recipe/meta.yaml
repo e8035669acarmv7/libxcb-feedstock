@@ -1,8 +1,8 @@
 {% set xorg_name = "libxcb" %}
 {% set xorg_category = "lib" %}
 {% set name = "libxcb" %}
-{% set version = "1.15" %}
-{% set sha256 = "1cb65df8543a69ec0555ac696123ee386321dfac1964a3da39976c9a05ad724d" %}
+{% set version = "1.16" %}
+{% set sha256 = "bc0f75f84b28e6496a19a1d094d7e47def861a50cb7cce5b23b62eecdc2a4479" %}
 {% set am_version = "1.15" %} # keep synchronized with build.sh
 
 package:
@@ -21,7 +21,7 @@ build:
   detect_binary_files_with_prefix: true
   run_exports:
     - {{ pin_subpackage('libxcb', max_pin='x.x') }}
-  
+
 requirements:
   build:
     - m2-autoconf                   # [win]
